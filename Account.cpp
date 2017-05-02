@@ -13,8 +13,8 @@
 #include <vector>
 
 // constructor
-Account::Account(const std::string& name)
-    : name(name)
+Account::Account(const std::string& call)
+    : name(call)
 { }
 
 // account name
@@ -24,9 +24,9 @@ std::string Account::getName() const {
 }
 
 // add a stream to this account
-void Account::addStream(const Stream& stream) {
+void Account::addStream(const Stream& watch) {
 
-    streams.push_back(stream);
+    streams.push_back(watch);
 }
 
 // account streaming report
@@ -130,7 +130,7 @@ std::string Account::data() const {
             case Video::ORIGINAL:
             output << "ORIGINAL";
             break;
-        }    	
+        }
 
         // stream title
         output << ',' << it->getVideo().getTitle();
