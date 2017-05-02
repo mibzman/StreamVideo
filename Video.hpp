@@ -17,7 +17,7 @@ public:
     static const int ORIGINAL   = 2;
 
     // constructor
-    Video(const std::string& title, int type, int hours, int minutes, int episodes);
+    Video(const std::string& titleCall, int movType, int numHours, int numMinutes, int episodeNum);
 
     // video title
     const std::string& getTitle() const;
