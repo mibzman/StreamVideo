@@ -7,8 +7,8 @@
 #include "Video.hpp"
 
 // constructor
-Video::Video(const std::string& title, int type, int hours, int minutes, int episodes)
-    : title(title), type(type), hours(hours), minutes(minutes), episodes(episodes)
+Video::Video(const std::string& titleCall, int movType, int numHours, int numMinutes, int episodeNum)
+    : title(titleCall), type(movType), hours(numHours), minutes(numMinutes), episodes(episodeNum)
 { }
 
 // video title
@@ -46,8 +46,8 @@ int Video::getEpisodes() const {
 }
 
 // set video length
-void Video::setLength(int hours, int minutes) {
+void Video::setLength(int timeHours, int timeMinutes) {
 
-	this->hours = hours;
-	this->minutes = minutes;
+	this->hours = timeHours;
+	this->minutes = timeMinutes;
 }
