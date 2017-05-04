@@ -23,6 +23,10 @@ int main() {
 		//now test the getTitle
 		assert(StarWars.getTitle()=="A new Hope");
 	}
-	
+	{
+		Video StarWars ("A new Hope",5,2,35,0 );
+		//now test the getTitle
+		assert(StarWars.getHours()==2);
+	}
 	return 0;
 }
