@@ -15,7 +15,9 @@ int main() {
 	// TODO: Add test cases
 	//test case 1
 	//test the basic constructor
-		Video StarWars (std::string episode1 = "A new Hope", int a=5, int timeH= 2, int timeM= 35, int epi=0 );
-
+	{
+		Video StarWars ("A new Hope",5,2,35,0 );
+		
+	}
 	return 0;
 }
