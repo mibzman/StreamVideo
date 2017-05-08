@@ -44,7 +44,7 @@ int main() {
    {
 Account customer("Larry");
 
-
+Video testVideo("Bolt", 0, 1, 37, 0);
 
 
    }
