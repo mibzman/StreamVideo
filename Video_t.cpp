@@ -43,8 +43,11 @@ int main() {
   }
   {
     Video StarWars ("A new Hope",5,2,35,0 );
-    //now test the getEpisodes
-    StarWars.setLength(2,35);
+    //now test the setLength()
+    StarWars.setLength(2,36);
+
+    assert(StarWars.getHours()==2);
+    assert(StarWars.getMinutes()==36); 
   }
   return 0;
 }
