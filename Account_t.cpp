@@ -54,6 +54,19 @@ assert(customer.data() == "Larry,MOVIE,Bolt,1,37,1\n");
 
 assert(customer.report() == "Stream Report for Account: Larry\nStreams:\n\tBolt\t1\n\nTotal Stream Events: 1\nNon-Original Stream Events: 1\nTotal Time: 1:37\n");
 
+    {
+      Account customer("Larry");
+
+      Video testVideo("Bolt", 0, 1, 37, 0);
+
+      Stream testStream(testVideo, 1);
+
+      customer.addStream(testStream);
+
+      assert(customer.data() == "Larry,MOVIE,Bolt,1,37,1\n");
+
+      assert(customer.report() == "Stream Report for Account: Larry\nStreams:\n\tBolt\t1\n\nTotal Stream Events: 1\nNon-Original Stream Events: 1\nTotal Time: 1:37\n");
+    }
 
    }
 
