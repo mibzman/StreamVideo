@@ -1,6 +1,6 @@
 /*
   Stream_t.cpp
-
+thomas
   Test program for class Stream
 */
 

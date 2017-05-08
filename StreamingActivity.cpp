@@ -13,11 +13,9 @@
 #include "Stream.hpp"
 #include "Account.hpp"
 
-int main() {
-
-    // Load videos from data file
+std::vector<Video> loadVideosFromFile(std::string filename){
     std::vector<Video> videos;
-    std::ifstream invideo("videos.csv");
+    std::ifstream invideo(filename.c_str());
     std::string line;
     while (getline(invideo, line)) {
         std::istringstream sline(line);
@@ -27,13 +25,13 @@ int main() {
         std::string stype;
         std::getline(sline, stype, ',');
         if (stype == "MOVIE")
-        	type = Video::MOVIE;
+            type = Video::MOVIE;
         else if (stype == "TVSHOW")
-        	type = Video::TVSHOW;
+            type = Video::TVSHOW;
         else if (stype == "ORIGINAL")
-        	type = Video::ORIGINAL;
+            type = Video::ORIGINAL;
         else
-        	continue;
+            continue;
 
         // video title
         std::string title;
@@ -65,6 +63,10 @@ int main() {
     }
     invideo.close();
 
+    return videos;
+}
+
+Account buildMockAccount(std::vector<Video> videos){
     // Account
     Account customer("Fred");
 
@@ -76,6 +78,16 @@ int main() {
     customer.addStream(s1);
     customer.addStream(s2);
     customer.addStream(s3);
+
+    return customer;
+}
+
+
+int main() {
+
+    std::vector<Video> videos = loadVideosFromFile("videos.csv");
+
+    Account customer = buildMockAccount(videos);
 
     // Output account streaming report
     std::cout << customer.report() << '\n';
