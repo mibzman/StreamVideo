@@ -25,22 +25,29 @@ int main() {
     }
 
     // TODO: Add test cases
-    
+
     //Test case for Issue 8: Test method for account data
     {
 	Account customer("Joe");
-	
+
 	Video testVideo("The Lord of the Rings: The Fellowship of the Ring", 0, 3, 18, 0);
-	
-	Stream testStream(testVideo, 1);	
+
+	Stream testStream(testVideo, 1);
 
 	customer.addStream(testStream);
-		
+
 	assert(customer.data() == "Joe,MOVIE,The Lord of the Rings: The Fellowship of the Ring,3,18,3\n");
     }
 
     //Additional test cases...
+   //test the Account report
+   {
+Account customer("Larry");
 
+
+
+
+   }
 
 
 
