@@ -50,7 +50,7 @@ Stream testStream(testVideo, 1);
 
 customer.addStream(testStream);
 
-
+assert(customer.data() == "Larry,MOVIE,Bolt,1,37,1\n");
 
    }
 
