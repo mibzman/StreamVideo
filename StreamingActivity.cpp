@@ -64,13 +64,9 @@ std::vector<Video> loadVideosFromFile(std::string filename){
     invideo.close();
 
     return videos;
- }
+}
 
-
-int main() {
-
-    std::vector<Video> videos = loadVideosFromFile("videos.csv");
-
+Account buildMockAccount(std::vector<Video> videos){
     // Account
     Account customer("Fred");
 
@@ -82,6 +78,16 @@ int main() {
     customer.addStream(s1);
     customer.addStream(s2);
     customer.addStream(s3);
+
+    return customer;
+}
+
+
+int main() {
+
+    std::vector<Video> videos = loadVideosFromFile("videos.csv");
+
+    Account customer = buildMockAccount(videos);
 
     // Output account streaming report
     std::cout << customer.report() << '\n';
