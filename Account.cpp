@@ -56,7 +56,8 @@ std::string Account::report() const {
         // stream counts and originals
         int streamCount = 0;
         int originals = 0;
-        switch(it->getVideo().getType()) {
+        determineType(it, originals, streamCount);
+        /*switch(it->getVideo().getType()) {
 
             // for movies, the stream count is the number of hours, with a minimum of 1
             case Video::MOVIE:
@@ -73,7 +74,7 @@ std::string Account::report() const {
             originals += it->getOccurrences();
             streamCount += it->getOccurrences();
             break;
-        }
+        }*/
 
         // stream counts for this video
         std::ostringstream out_str_stream;
@@ -158,4 +159,26 @@ std::string Account::data() const {
     }
 
     return output.str();
+}
+
+void Account::determineType(std::vector<Stream>::const_iterator it, int &originals, int &streamCount) const
+{
+	switch(it->getVideo().getType()) {
+
+            // for movies, the stream count is the number of hours, with a minimum of 1
+            case Video::MOVIE:
+            streamCount += it->getOccurrences() * (it->getVideo().getHours() ? it->getVideo().getHours() : 1);
+            break;
+
+            // for TV shows, the stream count is just the number of streams
+            case Video::TVSHOW:
+            streamCount += it->getOccurrences();
+            break;
+
+            // for TV shows, the stream count is just the number of streams
+            case Video::ORIGINAL:
+            originals += it->getOccurrences();
+            streamCount += it->getOccurrences();
+            break;
+        }
 }

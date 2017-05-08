@@ -24,6 +24,9 @@ public:
     // add a new stream
     void addStream(const Stream& stream);
 
+    // determine the type of an account
+    void determineType(std::vector<Stream>::const_iterator it, int &originals, int &StreamCount) const;
+
     // account streaming report
     std::string report() const;
 
