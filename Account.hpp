@@ -16,13 +16,13 @@ class Account {
 public:
 
     // constructor
-    Account(const std::string& name);
+    Account(const std::string& call);
 
     // account name
     std::string getName() const;
 
     // add a new stream
-    void addStream(const Stream& stream);
+    void addStream(const Stream& watch);
 
     // account streaming report
     std::string report() const;

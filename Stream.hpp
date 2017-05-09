@@ -13,7 +13,7 @@ class Stream {
 public:
 
     // constructor
-    Stream(const Video& video, int occurrences);
+    Stream(const Video& film, int numTimes);
 
     // number of times watched
     int getOccurrences() const;

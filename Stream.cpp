@@ -7,8 +7,8 @@
 #include "Stream.hpp"
 
 // constructor
-Stream::Stream(const Video& video, int occurrences)
-    : video(video), occurrences(occurrences)
+Stream::Stream(const Video& film, int numTimes)
+    : video(film), occurrences(numTimes)
 { }
 
 // number of times watched
