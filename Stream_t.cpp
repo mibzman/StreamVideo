@@ -9,12 +9,12 @@ thomas
 #include "Stream.hpp"
 
 bool videosAreEqual(Video video1, Video video2){
-	return
-		video1.getTitle() == video1.getTitle() ||
-		video1.getType() == video1.getType() ||
-		video1.getHours() == video1.getHours() ||
-		video1.getMinutes() == video1.getMinutes() ||
-		video1.getEpisodes() == video1.getEpisodes();
+    return
+        video1.getTitle() == video2.getTitle() ||
+        video1.getType() == video2.getType() ||
+        video1.getHours() == video2.getHours() ||
+        video1.getMinutes() == video2.getMinutes() ||
+        video1.getEpisodes() == video2.getEpisodes();
 }
 
 int main() {
