@@ -57,24 +57,6 @@ std::string Account::report() const {
         int streamCount = 0;
         int originals = 0;
         determineType(it, originals, streamCount);
-        /*switch(it->getVideo().getType()) {
-
-            // for movies, the stream count is the number of hours, with a minimum of 1
-            case Video::MOVIE:
-            streamCount += it->getOccurrences() * (it->getVideo().getHours() ? it->getVideo().getHours() : 1);
-            break;
-
-            // for TV shows, the stream count is just the number of streams
-            case Video::TVSHOW:
-            streamCount += it->getOccurrences();
-            break;
-
-            // for TV shows, the stream count is just the number of streams
-            case Video::ORIGINAL:
-            originals += it->getOccurrences();
-            streamCount += it->getOccurrences();
-            break;
-        }*/
 
         // stream counts for this video
         std::ostringstream out_str_stream;
@@ -113,9 +95,9 @@ std::string Account::data() const {
 
     	// customer name
     	output << name << ',';
-
+    	determineOutput(it, output);
     	// stream type
-        switch(it->getVideo().getType()) {
+       /* switch(it->getVideo().getType()) {
 
             // for movies, the stream count is the number of hours, with a minimum of 1
             case Video::MOVIE:
@@ -131,7 +113,7 @@ std::string Account::data() const {
             case Video::ORIGINAL:
             output << "ORIGINAL";
             break;
-        }    	
+        }   */ 	
 
         // stream title
         output << ',' << it->getVideo().getTitle();
@@ -181,4 +163,26 @@ void Account::determineType(std::vector<Stream>::const_iterator it, int &origina
             streamCount += it->getOccurrences();
             break;
         }
+}
+
+void Account::determineOutput(std::vector<Stream>::const_iterator it, std::ostringstream &output) const
+{
+	// stream type
+        switch(it->getVideo().getType()) {
+
+            // for movies, the stream count is the number of hours, with a minimum of 1
+            case Video::MOVIE:
+            output << "MOVIE";
+            break;
+
+            // for TV shows, the stream count is just the number of streams
+            case Video::TVSHOW:
+            output << "TVSHOW";
+            break;
+
+            // for TV shows, the stream count is just the number of streams
+            case Video::ORIGINAL:
+            output << "ORIGINAL";
+            break;
+        }    
 }
