@@ -8,13 +8,13 @@ thomas
 
 #include "Stream.hpp"
 
-bool videosAreEqual(Video video1, Video video2){
+bool operator==(const Video &video1, const Video &other) {
     return
-        video1.getTitle() == video2.getTitle() &&
-        video1.getType() == video2.getType() &&
-        video1.getHours() == video2.getHours() &&
-        video1.getMinutes() == video2.getMinutes() &&
-        video1.getEpisodes() == video2.getEpisodes();
+        video1.getTitle() == other.getTitle() &&
+        video1.getType() == other.getType() &&
+        video1.getHours() == other.getHours() &&
+        video1.getMinutes() == other.getMinutes() &&
+        video1.getEpisodes() == other.getEpisodes();
 }
 
 int main() {
@@ -33,7 +33,7 @@ int main() {
     	Stream stream(video, 1);
 
     	Video outputVideo = stream.getVideo();
-    	assert(videosAreEqual(video, outputVideo));
+    	assert(video == outputVideo);
     }
     
 
