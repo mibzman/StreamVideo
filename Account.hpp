@@ -31,6 +31,8 @@ public:
     //determines the type of an account and outputs the needed info
     void determineOutput(std::vector<Stream>::const_iterator it, std::ostringstream &output) const;
 
+    void determineCount(std::vector<Stream>::const_iterator it, std::ostringstream &output) const;
+
     // account streaming report
     std::string report() const;
 
