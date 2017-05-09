@@ -50,7 +50,7 @@ std::string Account::report() const {
     }
     output << '\n';
 
-    // total stream counts
+    /*// total stream counts
     output << "Total Stream Events: " << totalStreams << '\n';
 
     // total non-original stream counts
@@ -59,7 +59,10 @@ std::string Account::report() const {
     // total time
     int minutes = totalMinutes % 60;
     int hours = totalHours + totalMinutes / 60;
-    output << "Total Time: " << hours << ":" << minutes << '\n';
+    output << "Total Time: " << hours << ":" << minutes << '\n';*/
+
+    //displays the total amounts for the report of the account
+    displayTotals(output, totalStreams, totalOriginals, totalHours, totalMinutes);
 
     return output.str();
 }
@@ -75,25 +78,7 @@ std::string Account::data() const {
 
     // list of streams
     for (std::vector<Stream>::const_iterator it = streams.begin(); it != streams.end(); ++it) {
-
-    	/*// customer name
-    	output << name << ',';
-
-    	//determines the output by the stream type
-    	determineOutput(it, output);
-
-        // stream title
-        output << ',' << it->getVideo().getTitle();
-
-        // stream hours and minutes
-        output << ',' << (it->getVideo().getHours() * it->getOccurrences());
-        output << ',' << (it->getVideo().getMinutes() * it->getOccurrences());
-
-        // stream counts
-        output << ',';
-        displayCount(it, output);
-
-        output << '\n';*/
+    	//displays the data at a given instance in the vector
         displayData(it, output);
     }
 
@@ -207,4 +192,19 @@ void Account::displayCount(std::vector<Stream>::const_iterator it, std::ostrings
         displayCount(it, output);
 
         output << '\n';
+    }
+
+        //displays the total amounts for the report
+    void Account::displayTotals(std::ostringstream &output, int &totalStreams, int &totalOriginals, int &totalHours, int &totalMinutes) const
+    {
+    	// total stream counts
+    	output << "Total Stream Events: " << totalStreams << '\n';
+
+   		// total non-original stream counts
+   	 	output << "Non-Original Stream Events: " << (totalStreams - totalOriginals) << '\n';
+
+    	// total time
+    	int minutes = totalMinutes % 60;
+    	int hours = totalHours + totalMinutes / 60;
+    	output << "Total Time: " << hours << ":" << minutes << '\n';
     }
