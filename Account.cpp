@@ -50,17 +50,6 @@ std::string Account::report() const {
     }
     output << '\n';
 
-    /*// total stream counts
-    output << "Total Stream Events: " << totalStreams << '\n';
-
-    // total non-original stream counts
-    output << "Non-Original Stream Events: " << (totalStreams - totalOriginals) << '\n';
-
-    // total time
-    int minutes = totalMinutes % 60;
-    int hours = totalHours + totalMinutes / 60;
-    output << "Total Time: " << hours << ":" << minutes << '\n';*/
-
     //displays the total amounts for the report of the account
     displayTotals(output, totalStreams, totalOriginals, totalHours, totalMinutes);
 
