@@ -34,6 +34,9 @@ public:
     //determines the type of the account and outputs the needed stream count
     void displayCount(std::vector<Stream>::const_iterator it, std::ostringstream &output) const;
 
+    //displays the output for the report at a certain instance
+    void displayReport(std::vector<Stream>::const_iterator it, std::ostringstream &output, int &totalStreams, int &totalOriginals, int &totalHours, int &totalMinutes) const;
+
     // account streaming report
     std::string report() const;
 

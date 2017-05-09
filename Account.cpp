@@ -46,24 +46,7 @@ std::string Account::report() const {
     int totalMinutes = 0;
     for (std::vector<Stream>::const_iterator it = streams.begin(); it != streams.end(); ++it) {
 
-        // title of stream
-        output << '\t' << it->getVideo().getTitle();
-
-        // current total hours and minutes
-        totalHours += it->getVideo().getHours() * it->getOccurrences();
-        totalMinutes += it->getVideo().getMinutes() * it->getOccurrences();
-
-        // stream counts and originals
-        int streamCount = 0;
-        int originals = 0;
-        determineCount(it, originals, streamCount);
-
-        // stream counts for this video
-        std::ostringstream out_str_stream;
-        output << '\t' << streamCount << '\n';
-
-        totalStreams += streamCount;
-        totalOriginals += originals;
+        displayReport(it, output, totalStreams, totalOriginals, totalHours, totalMinutes);
     }
     output << '\n';
 
@@ -178,3 +161,26 @@ void Account::displayCount(std::vector<Stream>::const_iterator it, std::ostrings
             break;
         }
 }
+
+//displays the output for the report at a certain instance
+    void Account::displayReport(std::vector<Stream>::const_iterator it, std::ostringstream &output, int &totalStreams, int &totalOriginals, int &totalHours, int &totalMinutes) const
+    {
+    	// title of stream
+        output << '\t' << it->getVideo().getTitle();
+
+        // current total hours and minutes
+        totalHours += it->getVideo().getHours() * it->getOccurrences();
+        totalMinutes += it->getVideo().getMinutes() * it->getOccurrences();
+
+        // stream counts and originals
+        int streamCount = 0;
+        int originals = 0;
+        determineCount(it, originals, streamCount);
+
+        // stream counts for this video
+        std::ostringstream out_str_stream;
+        output << '\t' << streamCount << '\n';
+
+        totalStreams += streamCount;
+        totalOriginals += originals;
+    }
