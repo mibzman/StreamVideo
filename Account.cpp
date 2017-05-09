@@ -56,7 +56,7 @@ std::string Account::report() const {
         // stream counts and originals
         int streamCount = 0;
         int originals = 0;
-        determineType(it, originals, streamCount);
+        determineCount(it, originals, streamCount);
 
         // stream counts for this video
         std::ostringstream out_str_stream;
@@ -108,19 +108,7 @@ std::string Account::data() const {
 
         // stream counts
         output << ',';
-        determineCount(it, output);
-        /*switch(it->getVideo().getType()) {
-
-            // for movies, the stream count is the number of hours, with a minimum of 1
-            case Video::MOVIE:
-            output << (it->getOccurrences() * (it->getVideo().getHours() ? it->getVideo().getHours() : 1));
-            break;
-
-            // all others are just the number of occurrences
-            default:
-            output << it->getOccurrences();
-            break;
-        }*/
+        displayCount(it, output);
 
         output << '\n';
     }
@@ -129,7 +117,7 @@ std::string Account::data() const {
 }
 
 //determines the type of the account and determines the stream count
-void Account::determineType(std::vector<Stream>::const_iterator it, int &originals, int &streamCount) const
+void Account::determineCount(std::vector<Stream>::const_iterator it, int &originals, int &streamCount) const
 {
 	switch(it->getVideo().getType()) {
 
@@ -175,7 +163,7 @@ void Account::determineOutput(std::vector<Stream>::const_iterator it, std::ostri
 }
 
 //determines the type of the account and displays the stream count that corresponds to that type
-void Account::determineCount(std::vector<Stream>::const_iterator it, std::ostringstream &output) const
+void Account::displayCount(std::vector<Stream>::const_iterator it, std::ostringstream &output) const
 {
 	switch(it->getVideo().getType()) {
 

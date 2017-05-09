@@ -26,12 +26,13 @@ public:
     void addStream(const Stream& stream);
 
     // determine the type of an account
-    void determineType(std::vector<Stream>::const_iterator it, int &originals, int &StreamCount) const;
+    void determineCount(std::vector<Stream>::const_iterator it, int &originals, int &StreamCount) const;
 
     //determines the type of an account and outputs the needed info
     void determineOutput(std::vector<Stream>::const_iterator it, std::ostringstream &output) const;
 
-    void determineCount(std::vector<Stream>::const_iterator it, std::ostringstream &output) const;
+    //determines the type of the account and outputs the needed stream count
+    void displayCount(std::vector<Stream>::const_iterator it, std::ostringstream &output) const;
 
     // account streaming report
     std::string report() const;
