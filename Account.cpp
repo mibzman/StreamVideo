@@ -45,7 +45,7 @@ std::string Account::report() const {
     int totalHours = 0;
     int totalMinutes = 0;
     for (std::vector<Stream>::const_iterator it = streams.begin(); it != streams.end(); ++it) {
-
+    	//displays the report for an instance in the vector of streams
         displayReport(it, output, totalStreams, totalOriginals, totalHours, totalMinutes);
     }
     output << '\n';
@@ -76,7 +76,7 @@ std::string Account::data() const {
     // list of streams
     for (std::vector<Stream>::const_iterator it = streams.begin(); it != streams.end(); ++it) {
 
-    	// customer name
+    	/*// customer name
     	output << name << ',';
 
     	//determines the output by the stream type
@@ -93,7 +93,8 @@ std::string Account::data() const {
         output << ',';
         displayCount(it, output);
 
-        output << '\n';
+        output << '\n';*/
+        displayData(it, output);
     }
 
     return output.str();
@@ -183,4 +184,27 @@ void Account::displayCount(std::vector<Stream>::const_iterator it, std::ostrings
 
         totalStreams += streamCount;
         totalOriginals += originals;
+    }
+
+     //displays the output for the data at a certain instance
+    void Account::displayData(std::vector<Stream>::const_iterator it, std::ostringstream &output) const
+    {
+    	// customer name
+    	output << name << ',';
+
+    	//determines the output by the stream type
+    	determineOutput(it, output);
+
+        // stream title
+        output << ',' << it->getVideo().getTitle();
+
+        // stream hours and minutes
+        output << ',' << (it->getVideo().getHours() * it->getOccurrences());
+        output << ',' << (it->getVideo().getMinutes() * it->getOccurrences());
+
+        // stream counts
+        output << ',';
+        displayCount(it, output);
+
+        output << '\n';
     }

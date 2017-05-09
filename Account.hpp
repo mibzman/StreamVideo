@@ -37,6 +37,9 @@ public:
     //displays the output for the report at a certain instance
     void displayReport(std::vector<Stream>::const_iterator it, std::ostringstream &output, int &totalStreams, int &totalOriginals, int &totalHours, int &totalMinutes) const;
 
+    //displays the output for the data at a certain instance
+    void displayData(std::vector<Stream>::const_iterator it, std::ostringstream &output) const;
+
     // account streaming report
     std::string report() const;
 
